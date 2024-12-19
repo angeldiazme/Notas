@@ -1,0 +1,158 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notas.Views.NoteDetailsPage"
+             Title="Detalles de la Nota"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!-- Fondo de la página -->
+        <Image Source="fondoprincipal"
+               Aspect="AspectFill"
+               Opacity="0.1"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Contenido principal -->
+        <Grid RowDefinitions="*, Auto">
+            <!-- Información de la nota -->
+            <ScrollView Grid.Row="0" Margin="0,10,0,0">
+                <StackLayout Padding="20" Spacing="15">
+
+                    <!-- Título -->
+                    <Label Text="Título" FontAttributes="Bold"/>
+                    <Entry x:Name="TituloEntry"
+                           IsEnabled="False"
+                           Placeholder="Título de la nota"
+                           BackgroundColor="#E0E0E0"
+                           TextColor="Black"
+                           PlaceholderColor="Gray"
+                           Margin="0,5,0,10"/>
+
+                    <!-- Descripción -->
+                    <Label Text="Descripción" FontAttributes="Bold"/>
+                    <Editor x:Name="DescripcionEditor"
+                            IsEnabled="False"
+                            Placeholder="Descripción de la nota"
+                            BackgroundColor="#E0E0E0"
+                            TextColor="Black"
+                            PlaceholderColor="Gray"
+                            Margin="0,5,0,10"/>
+
+                    <!-- Fecha -->
+                    <Label Text="Fecha" FontAttributes="Bold"/>
+                    <Entry x:Name="FechaEntry"
+                           IsEnabled="False"
+                           Placeholder="Fecha de creación"
+                           BackgroundColor="#E0E0E0"
+                           TextColor="Black"
+                           PlaceholderColor="Gray"
+                           Margin="0,5,0,10"/>
+
+                    <!-- Imagen -->
+                    <Label Text="Imagen" FontAttributes="Bold"/>
+                    <Image x:Name="ImagenPreview"
+                           HeightRequest="200"
+                           Aspect="AspectFit"
+                           BackgroundColor="#E0E0E0"
+                           Margin="0,5,0,10"
+                           HorizontalOptions="Center"/>
+                    <Button x:Name="ActualizarImagenButton"
+                            Text="🖼️ Tomar Foto"
+                            IsEnabled="False"
+                            Clicked="ActualizarImagen_Clicked"
+                            BackgroundColor="Blue"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Margin="0,10,0,0"/>
+
+                    <!-- Audio Actual -->
+                    <Label Text="Audio Actual" FontAttributes="Bold"/>
+                    <Label x:Name="AudioLabel" Text="No se ha cargado ningún audio"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center" Margin="0,10,0,10">
+                        <Button Text="▶️ Reproducir"
+                                Clicked="ReproducirAudio_Clicked"
+                                BackgroundColor="#4CAF50"
+                                TextColor="White"
+                                CornerRadius="10"/>
+                        <Button Text="⏸️ Pausar"
+                                Clicked="PausarAudio_Clicked"
+                                BackgroundColor="#FFC107"
+                                TextColor="White"
+                                CornerRadius="10"/>
+                        <Button Text="⏹️ Detener"
+                                Clicked="DetenerAudio_Clicked"
+                                BackgroundColor="#F44336"
+                                TextColor="White"
+                                CornerRadius="10"/>
+                    </StackLayout>
+
+                    <!-- Actualizar Audio -->
+                    <Button x:Name="ActualizarAudioButton"
+                            Text="🎙️ Actualizar Audio"
+                            IsEnabled="False"
+                            Clicked="ActualizarAudio_Clicked"
+                            BackgroundColor="Blue"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Margin="0,10,0,0"/>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Botones de acción -->
+            <StackLayout Orientation="Horizontal"
+                         Padding="10"
+                         Spacing="10"
+                         BackgroundColor="LightGray"
+                         Grid.Row="1"
+                         HorizontalOptions="FillAndExpand">
+                <!-- Botón de regresar -->
+                <Button Text="🔙"
+                        Clicked="Regresar_Clicked"
+                        BackgroundColor="White"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="80"
+                        HeightRequest="50"/>
+
+                <!-- Botón de modificar -->
+                <Button x:Name="ModificarButton"
+                        Text="✏️"
+                        Clicked="ModificarNota_Clicked"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="80"
+                        HeightRequest="50"/>
+
+                <!-- Botón de eliminar -->
+                <Button Text="🗑️"
+                        x:Name="EliminarButton"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="80"
+                        HeightRequest="50"
+                        Clicked="EliminarNota_Clicked"/>
+
+                <!-- Botón de actualizar -->
+                <Button Text="🔄"
+                        x:Name="ActualizarButton"
+                        Clicked="ActualizarNota_Clicked"
+                        IsEnabled="False"
+                        BackgroundColor="Orange"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="80"
+                        HeightRequest="50"/>
+            </StackLayout>
+        </Grid>
+
+        <!-- Indicador de carga -->
+        <ActivityIndicator x:Name="CargandoIndicator"
+                           IsVisible="False"
+                           IsRunning="False"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Center"
+                           Color="Blue"/>
+    </Grid>
+</ContentPage>

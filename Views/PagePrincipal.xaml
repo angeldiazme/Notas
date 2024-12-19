@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notas.Views.PagePrincipal"
+             Title="PagePrincipal"
+              NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <!-- Fondo de la página -->
+        <Image Source="Resources/Images/fondoprincipal.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Contenido principal -->
+        <StackLayout Padding="20" Spacing="10" VerticalOptions="Center">
+            <!-- Botón Crear Nota -->
+            <Button Text="✏️ Crear Nota"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="ButtonCrear_Clicked" />
+
+            <!-- Botón Ver Notas -->
+            <Button Text="📜 Ver Notas"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="ButtonVerNotas_Clicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

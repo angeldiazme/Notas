@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notas.Views.CreateNotePage"
+             Title="Crear Nota"
+             NavigationPage.HasNavigationBar="True">
+ 
+
+
+    <Grid>
+        <!-- Fondo de la página -->
+        <Image Source="fondoprincipal"
+               Aspect="AspectFill"
+               Opacity="0.1"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Contenido principal -->
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="15">
+
+                <!-- Título -->
+                <Label Text="Título:"
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                <Entry x:Name="TituloEntry" 
+                       Placeholder="Ingrese el título de la nota"
+                       PlaceholderColor="Gray"
+                       BackgroundColor="#F0F0F0"
+                       Margin="0,0,0,10" />
+
+                <!-- Descripción -->
+                <Label Text="Descripción:"
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                <Editor x:Name="DescripcionEntry" 
+                        Placeholder="Ingrese la descripción"
+                        PlaceholderColor="Gray"
+                        BackgroundColor="#F0F0F0"
+                        AutoSize="TextChanges"
+                        Margin="0,0,0,10" />
+
+                <!-- Fecha -->
+                <Label Text="Fecha:"
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                <Entry x:Name="FechaEntry" 
+                       IsReadOnly="True"
+                       BackgroundColor="#F0F0F0"
+                       Margin="0,0,0,10" />
+
+                <!-- Imagen -->
+                <Label Text="Imagen Opcional:"
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                <Image x:Name="ImagenPreview" 
+                       HeightRequest="200" 
+                       Margin="0,0,0,10"
+                       BackgroundColor="White"
+                       HorizontalOptions="Center" />
+                <Button Text="📷 Tomar Foto" 
+                        Clicked="TomarFoto_Clicked"
+                        BackgroundColor="Blue"
+                        TextColor="White" 
+                        CornerRadius="10"
+                        Margin="0,0,0,10" />
+
+                <!-- Audio -->
+                <Label Text="Audio Opcional:"
+                       FontAttributes="Bold"
+                       FontSize="Medium" />
+                <Button Text="🎙️ Grabar Audio" 
+                        Clicked="GrabarAudio_Clicked"
+                        BackgroundColor="Blue"
+                        TextColor="White" 
+                        CornerRadius="10" 
+                        Margin="0,0,0,10" />
+                <Label x:Name="AudioLabel" 
+                       Text="No se ha grabado audio" 
+                       FontAttributes="Italic" 
+                       FontSize="Small"
+                       TextColor="Gray" />
+
+                <!-- Controles de Audio -->
+                <StackLayout Orientation="Horizontal" 
+                             Spacing="10" 
+                             x:Name="AudioControls" 
+                             IsVisible="False"
+                             Margin="0,10,0,10"
+                             HorizontalOptions="Center">
+                    <Button Text="▶️ Reproducir" 
+                            Clicked="ReproducirAudio_Clicked" 
+                            BackgroundColor="#4CAF50"
+                            TextColor="White" 
+                            CornerRadius="10" />
+                    <Button Text="⏸️ Pausar" 
+                            Clicked="PausarAudio_Clicked" 
+                            BackgroundColor="#FFC107"
+                            TextColor="White" 
+                            CornerRadius="10" />
+                    <Button Text="⏹️ Detener" 
+                            Clicked="DetenerAudio_Clicked" 
+                            BackgroundColor="#F44336"
+                            TextColor="White" 
+                            CornerRadius="10" />
+                </StackLayout>
+
+                <!-- Botón Guardar -->
+                <Button x:Name="GuardarButton" 
+                        Text="💾 Guardar Nota" 
+                        Clicked="GuardarButton_Clicked" 
+                        BackgroundColor="Blue" 
+                        TextColor="White" 
+                        FontAttributes="Bold" 
+                        CornerRadius="10" 
+                        Margin="0,10,0,0" />
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Indicador de carga -->
+        <Grid x:Name="GuardarCargandoContainer"
+              IsVisible="False"
+              BackgroundColor="#000000AA" 
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
+            <ActivityIndicator x:Name="GuardarCargando"
+                               IsRunning="False"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Color="Blue"
+                               WidthRequest="50"
+                               HeightRequest="50" />
+        </Grid>
+    </Grid>
+</ContentPage>
